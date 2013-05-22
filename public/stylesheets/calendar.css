@@ -1,0 +1,67 @@
+body {
+  background: #111;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: "CartoGothic Std", Helvetica, Arial, sans-serif;
+  font-size: 1.8em;
+}
+
+header {
+  display: block;
+  background: #ffbf2c;
+  color: #000;
+  padding: 0.5rem;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 10px 80px 5px;
+  background: url(/images/plane-small.png) no-repeat 10px center;
+}
+
+ul#releases {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+}
+
+
+#releases li {
+  list-style: none;
+  padding: 0.85em;
+  border-bottom: 1px solid #666;
+  display: block;
+  margin: 0;
+}
+
+#releases li.now .time, #releases li.now .status {
+  color: #b0ff63;
+  -moz-animation:active 2s infinite; /* Firefox */
+    /*-webkit-animation:myfirst 5s infinite; /* Safari and Chrome */
+}
+#releases li.fail .status {
+  color: #ff3b40;
+}
+
+#releases li span {
+  display: inline-block;
+}
+#releases li .app {
+  width: 50%;
+}
+#releases li .time {
+  width: 25%;
+}
+#releases li .status {
+  width: 25%;
+}
+
+@-moz-keyframes active {
+  0%   {color: #fff;}
+  50%  {color: #b0ff63;}
+  100%   {color: #fff;}
+}
