@@ -41,6 +41,10 @@ class DepartureLounge < Sinatra::Base
     ApiClient.instance = ApiClient.new
   end
 
+  use Rack::Auth::Basic, "Please login to the release dashboard" do |username, password|
+    username == 'govuk' and password == ENV['govuk_password']
+  end
+
   get '/events.json' do
     events = ApiClient.instance.events.map do |event|
       {
