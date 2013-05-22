@@ -16,7 +16,7 @@ $(document).ready(function(){
 
         if ((start_at < now) && (end_at > now)) {
           $instance.addClass('now');
-          $('<span class="status"></span>').text("Deploy in process").appendTo($instance);
+          $('<span class="status"></span>').text("Deploy in progress").appendTo($instance);
         } else if (start_at < half_hour) {
           $('<span class="status"></span>').text("Go to gate").appendTo($instance);
         } else {
