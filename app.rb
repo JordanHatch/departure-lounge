@@ -25,7 +25,7 @@ class ApiClient
     @client.execute(:api_method => service.events.list, :parameters => {
       'calendarId' => ENV["govuk_calendar_id"],
       'timeMin' => DateTime.now.to_s,
-      'timeMax' => 24.hours.from_now.to_datetime.to_s,
+      'timeMax' => 3.days.from_now.to_datetime.to_s,
       'orderBy' => 'startTime',
       'singleEvents' => true
     }).data.items
