@@ -7,18 +7,22 @@ $(document).ready(function(){
         var $instance = $('<li></li>');
         $('<span class="app"></span>').text(release.app).appendTo($instance);
 
-        var start_at = new Date(release.start);
-        var end_at = new Date(release.end);
-        var now = new Date();
-        var half_hour = new Date(now.getTime() + 30*60000);
+        var start_at = Date.parse(release.start);
+        var end_at = Date.parse(release.end);
+        var half_hour = Date.today().add(30).minutes();
+        var now = Date.today().setTimeToNow();
 
-        $('<span class="time"></span>').text(prettyTime(start_at) + " → "+ prettyTime(end_at)).appendTo($instance);
+        var day_label = (start_at.isAfter(now.at("11:59pm"))) ? start_at.toString('ddd') + " " : "";
+        var time_label = day_label + start_at.toString("hh:mm") + " → "+ end_at.toString("hh:mm");
 
-        if ((start_at < now) && (end_at > now)) {
+
+        $('<span class="time"></span>').text(time_label).appendTo($instance);
+
+        if ((now.isAfter(start_at)) && (now.isBefore(end_at))) {
           $instance.addClass('now');
           $('<span class="status"></span>').text("Deploy in process").appendTo($instance);
         } else if (start_at < half_hour) {
-          $('<span class="status"></span>').text("Go to gate").appendTo($instance);
+          $('<span class="status"></span>').text("Deploying soon").appendTo($instance);
         } else {
           $('<span class="status"></span>').appendTo($instance);
         }
@@ -28,12 +32,6 @@ $(document).ready(function(){
     }).fail(function(){
       $('#releases li').removeClass('now').addClass('fail').find('.status').text("Delayed");
     });
-  }
-
-  function prettyTime(datetime) {
-    function pad(n){return n<10 ? '0'+n : n}
-
-    return "" + pad(datetime.getHours()) +":"+ pad(datetime.getMinutes());
   }
 
   setInterval(loadBoard, 30000);
