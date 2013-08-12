@@ -7,13 +7,13 @@ $(document).ready(function(){
         var $instance = $('<li></li>');
         $('<span class="app"></span>').text(release.app).appendTo($instance);
 
-        var start_at = Date.parse(release.start);
-        var end_at = Date.parse(release.end);
-        var half_hour = Date.today().add(30).minutes();
-        var now = Date.today().setTimeToNow();
+        var start_at = moment(release.start).tz("Europe/London");
+        var end_at = moment(release.end).tz("Europe/London");
+        var half_hour = moment().add(30, 'm');
+        var now = moment();
 
-        var day_label = (start_at.isAfter(now.at("11:59pm"))) ? start_at.toString('ddd') + " " : "";
-        var time_label = day_label + start_at.toString("hh:mm") + " → "+ end_at.toString("hh:mm");
+        var day_label = (start_at.isAfter(now, 'day')) ? start_at.format('ddd') + " " : "";
+        var time_label = day_label + start_at.format("HH:mm") + " → "+ end_at.format("HH:mm");
 
 
         $('<span class="time"></span>').text(time_label).appendTo($instance);
