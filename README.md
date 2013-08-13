@@ -25,3 +25,7 @@ bundle exec rackup -p 5000
 ````
 
 Visit <http://localhost:5000> and use the username `govuk` with the password defined in the `govuk_password` environment variable.
+
+## Typeface
+
+For a more authentic airport feel, install the [CartoGothic Std](http://www.fontsquirrel.com/fonts/CartoGothic-Std) typeface.
