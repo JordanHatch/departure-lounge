@@ -16,6 +16,7 @@ The app requires the following environment variables to be set:
 - `govuk_client_key` - The private key for the service account, as a base64-encoded string
 - `govuk_calendar_id` - The identifier for the calendar you wish to use (eg. `xxxxxx@group.calendar.google.com`)
 - `govuk_password` - A password used to protect the calendar (uses HTTP basic auth)
+- `departure_lounge_title` - The title of the dashboard.
 
 ## Usage
 
