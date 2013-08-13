@@ -12,11 +12,13 @@ Using the [Google API Console](https://code.google.com/apis/console/), you'll fi
 
 The app requires the following environment variables to be set:
 
-- `govuk_issuer` - The email address for the Google API service account (eg. `xxxxxx@developer.gserviceaccount.com`)
-- `govuk_client_key` - The private key for the service account, as a base64-encoded string
-- `govuk_calendar_id` - The identifier for the calendar you wish to use (eg. `xxxxxx@group.calendar.google.com`)
-- `govuk_password` - A password used to protect the calendar (uses HTTP basic auth)
+- `departure_lounge_issuer` - The email address for the Google API service account (eg. `xxxxxx@developer.gserviceaccount.com`)
+- `departure_lounge_client_key` - The private key for the service account, as a base64-encoded string
+- `departure_lounge_calendar_id` - The identifier for the calendar you wish to use (eg. `xxxxxx@group.calendar.google.com`)
 - `departure_lounge_title` - The title of the dashboard.
+- `departure_lounge_user` - The username used for basic authentication to access the calendar
+- `departure_lounge_password` - A password used to protect the calendar
+
 
 ## Usage
 
@@ -27,7 +29,7 @@ bundle install
 bundle exec rackup -p 5000
 ````
 
-Visit <http://localhost:5000> and use the username `govuk` with the password defined in the `govuk_password` environment variable.
+Visit <http://localhost:5000> and use the username and password defined in the environment variables to access the dashboard.
 
 ## Typeface
 

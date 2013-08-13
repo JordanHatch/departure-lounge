@@ -10,12 +10,12 @@ class ApiClient
   def initialize
     @client = Google::APIClient.new
 
-    key = Google::APIClient::KeyUtils.load_from_pkcs12(Base64.decode64(ENV["govuk_client_key"]), 'notasecret')
+    key = Google::APIClient::KeyUtils.load_from_pkcs12(Base64.decode64(ENV["departure_lounge_client_key"]), 'notasecret')
     @client.authorization = Signet::OAuth2::Client.new(
       :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
       :audience => 'https://accounts.google.com/o/oauth2/token',
       :scope => 'https://www.googleapis.com/auth/calendar.readonly',
-      :issuer => ENV["govuk_issuer"],
+      :issuer => ENV["departure_lounge_issuer"],
       :signing_key => key
     )
     @client.authorization.fetch_access_token!
@@ -23,7 +23,7 @@ class ApiClient
 
   def events
     @client.execute(:api_method => service.events.list, :parameters => {
-      'calendarId' => ENV["govuk_calendar_id"],
+      'calendarId' => ENV["departure_lounge_calendar_id"],
       'timeMin' => DateTime.now.to_s,
       'timeMax' => 3.days.from_now.to_datetime.to_s,
       'orderBy' => 'startTime',
@@ -42,7 +42,7 @@ class DepartureLounge < Sinatra::Base
   end
 
   use Rack::Auth::Basic, "Please login to the release dashboard" do |username, password|
-    username == 'govuk' and password == ENV['govuk_password']
+    username == ENV['departure_lounge_user'] and password == ENV['departure_lounge_password']
   end
 
   get '/events.json' do
