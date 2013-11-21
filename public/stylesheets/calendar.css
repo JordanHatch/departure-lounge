@@ -52,13 +52,15 @@ ul#releases {
   display: inline-block;
 }
 #releases li .app {
-  width: 50%;
+  display: block;
+  font-size: 3.5rem;
 }
 #releases li .time {
-  width: 25%;
+  display: inline-block;
 }
 #releases li .status {
-  width: 25%;
+  display: inline-block;
+  margin-left: 2rem;
 }
 
 @-moz-keyframes active {
