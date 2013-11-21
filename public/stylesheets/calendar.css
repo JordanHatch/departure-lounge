@@ -34,7 +34,7 @@ ul#releases {
 #releases li {
   list-style: none;
   padding: 0.85em;
-  border-bottom: 1px solid #666;
+  border-bottom: 2px solid #333;
   display: block;
   margin: 0;
 }
@@ -43,6 +43,10 @@ ul#releases {
   color: #b0ff63;
   -moz-animation:active 2s infinite; /* Firefox */
     /*-webkit-animation:myfirst 5s infinite; /* Safari and Chrome */
+}
+#releases li.now {
+  background: url('/images/badger.png') no-repeat center right;
+  margin-right: 20px;
 }
 #releases li.fail .status {
   color: #ff3b40;
