@@ -45,8 +45,7 @@ ul#releases {
     /*-webkit-animation:myfirst 5s infinite; /* Safari and Chrome */
 }
 #releases li.now {
-  background: url('/images/badger.png') no-repeat center right;
-  margin-right: 20px;
+  background: url('/images/badger.png') no-repeat 98% center;
 }
 #releases li.fail .status {
   color: #ff3b40;
