@@ -63,6 +63,13 @@ ul#releases {
   margin-left: 2rem;
 }
 
+#status {
+  background: url('/images/bigger-badger.png') no-repeat top center;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 300px;
+}
+
 @-moz-keyframes active {
   0%   {color: #fff;}
   50%  {color: #b0ff63;}
