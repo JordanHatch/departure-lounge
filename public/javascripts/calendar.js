@@ -12,6 +12,10 @@ $(document).ready(function(){
           var $instance = $('<li></li>');
           $('<span class="app"></span>').text(release.app).appendTo($instance);
 
+          if (release.start == null || release.end == null) {
+            return;
+          }
+
           var start_at = moment(release.start).tz("Europe/London");
           var end_at = moment(release.end).tz("Europe/London");
           var half_hour = moment().add(30, 'm');
