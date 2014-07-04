@@ -39,6 +39,8 @@ end
 class DepartureLounge < Sinatra::Base
   configure do
     ApiClient.instance = ApiClient.new
+
+    set :protection, :except => :frame_options
   end
 
   use Rack::Auth::Basic, "Please login to the release dashboard" do |username, password|
